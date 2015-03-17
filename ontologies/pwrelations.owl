@@ -1,0 +1,352 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY pwrelations2 "http://www.meteck.org/files/ontologies/pwrelations.owl#" >
+    <!ENTITY pwrelations "http://www.meteck.org/teaching/ontologies/pwrelations.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/2010/3/pwrelations.owl#"
+     xml:base="http://www.semanticweb.org/ontologies/2010/3/pwrelations.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:pwrelations="http://www.meteck.org/teaching/ontologies/pwrelations.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:pwrelations2="http://www.meteck.org/files/ontologies/pwrelations.owl#">
+    <owl:Ontology rdf:about="http://www.meteck.org/files/ontologies/pwrelations.owl">
+        <rdfs:comment>OWL version of the taxonomy of part-whole relations created by C. Maria Keet</rdfs:comment>
+        <rdfs:comment>Details are described in the paper:
+Keet, C.M. and Artale, A. Representing and Reasoning over a Taxonomy of Part-Whole Relations. Applied Ontology, 2008, 3(1-2): 91-110.</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#consitutedOf -->
+
+    <owl:ObjectProperty rdf:about="&pwrelations2;consitutedOf"/>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#constitutes -->
+
+    <owl:ObjectProperty rdf:about="&pwrelations2;constitutes">
+        <rdfs:domain rdf:resource="&pwrelations2;AmountOfMatter"/>
+        <rdfs:range rdf:resource="&pwrelations2;PhysicalObject"/>
+        <owl:inverseOf rdf:resource="&pwrelations2;consitutedOf"/>
+        <rdfs:subPropertyOf rdf:resource="&pwrelations2;mpartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#containedIn -->
+
+    <owl:ObjectProperty rdf:about="&pwrelations2;containedIn">
+        <rdfs:range rdf:resource="&pwrelations2;Region"/>
+        <rdfs:domain rdf:resource="&pwrelations2;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&pwrelations2;spatialPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#involvedIn -->
+
+    <owl:ObjectProperty rdf:about="&pwrelations2;involvedIn">
+        <rdfs:domain rdf:resource="&pwrelations2;Perdurant"/>
+        <rdfs:range rdf:resource="&pwrelations2;Perdurant"/>
+        <rdfs:subPropertyOf rdf:resource="&pwrelations2;partOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#locatedIn -->
+
+    <owl:ObjectProperty rdf:about="&pwrelations2;locatedIn">
+        <rdfs:domain rdf:resource="&pwrelations2;Region"/>
+        <rdfs:range rdf:resource="&pwrelations2;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&pwrelations2;spatialPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#memberOf -->
+
+    <owl:ObjectProperty rdf:about="&pwrelations2;memberOf">
+        <rdfs:range rdf:resource="&pwrelations2;SocialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&pwrelations2;mpartOf"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&pwrelations2;PhysicalObject"/>
+                    <rdf:Description rdf:about="&pwrelations2;SocialObject"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#mpartOf -->
+
+    <owl:ObjectProperty rdf:about="&pwrelations2;mpartOf">
+        <rdfs:subPropertyOf rdf:resource="&pwrelations2;partwhole"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#partOf -->
+
+    <owl:ObjectProperty rdf:about="&pwrelations2;partOf">
+        <rdf:type rdf:resource="&owl;ReflexiveProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&pwrelations2;partwhole"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#participatesIn -->
+
+    <owl:ObjectProperty rdf:about="&pwrelations2;participatesIn">
+        <rdfs:domain rdf:resource="&pwrelations2;Endurant"/>
+        <rdfs:range rdf:resource="&pwrelations2;Perdurant"/>
+        <rdfs:subPropertyOf rdf:resource="&pwrelations2;mpartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#partwhole -->
+
+    <owl:ObjectProperty rdf:about="&pwrelations2;partwhole">
+        <rdfs:domain rdf:resource="&pwrelations2;Particular"/>
+        <rdfs:range rdf:resource="&pwrelations2;Particular"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#sPartOf -->
+
+    <owl:ObjectProperty rdf:about="&pwrelations2;sPartOf">
+        <rdfs:domain rdf:resource="&pwrelations2;Endurant"/>
+        <rdfs:range rdf:resource="&pwrelations2;Endurant"/>
+        <rdfs:subPropertyOf rdf:resource="&pwrelations2;partOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#spatialPartOf -->
+
+    <owl:ObjectProperty rdf:about="&pwrelations2;spatialPartOf">
+        <rdfs:subPropertyOf rdf:resource="&pwrelations2;partOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#subQuantityOf -->
+
+    <owl:ObjectProperty rdf:about="&pwrelations2;subQuantityOf">
+        <rdfs:range rdf:resource="&pwrelations2;AmountOfMatter"/>
+        <rdfs:domain rdf:resource="&pwrelations2;AmountOfMatter"/>
+        <rdfs:subPropertyOf rdf:resource="&pwrelations2;mpartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#Abstract -->
+
+    <owl:Class rdf:about="&pwrelations2;Abstract">
+        <rdfs:subClassOf rdf:resource="&pwrelations2;Particular"/>
+        <owl:disjointWith rdf:resource="&pwrelations2;Endurant"/>
+        <owl:disjointWith rdf:resource="&pwrelations2;Perdurant"/>
+        <owl:disjointWith rdf:resource="&pwrelations2;Quality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#AgentivePhysicalObject -->
+
+    <owl:Class rdf:about="&pwrelations2;AgentivePhysicalObject">
+        <rdfs:subClassOf rdf:resource="&pwrelations2;PhysicalObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#AmountOfMatter -->
+
+    <owl:Class rdf:about="&pwrelations2;AmountOfMatter">
+        <rdfs:subClassOf rdf:resource="&pwrelations2;PysicalEndurant"/>
+        <owl:disjointWith rdf:resource="&pwrelations2;Feature"/>
+        <owl:disjointWith rdf:resource="&pwrelations2;PhysicalObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#ArbitrarySum -->
+
+    <owl:Class rdf:about="&pwrelations2;ArbitrarySum">
+        <rdfs:subClassOf rdf:resource="&pwrelations2;Endurant"/>
+        <owl:disjointWith rdf:resource="&pwrelations2;NonPhysicalEndurant"/>
+        <owl:disjointWith rdf:resource="&pwrelations2;PysicalEndurant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#Endurant -->
+
+    <owl:Class rdf:about="&pwrelations2;Endurant">
+        <rdfs:subClassOf rdf:resource="&pwrelations2;Particular"/>
+        <owl:disjointWith rdf:resource="&pwrelations2;Perdurant"/>
+        <owl:disjointWith rdf:resource="&pwrelations2;Quality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#Feature -->
+
+    <owl:Class rdf:about="&pwrelations2;Feature">
+        <rdfs:subClassOf rdf:resource="&pwrelations2;PysicalEndurant"/>
+        <owl:disjointWith rdf:resource="&pwrelations2;PhysicalObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#MentalObject -->
+
+    <owl:Class rdf:about="&pwrelations2;MentalObject">
+        <rdfs:subClassOf rdf:resource="&pwrelations2;NonPhysicalObject"/>
+        <owl:disjointWith rdf:resource="&pwrelations2;SocialObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#NonAgentivePhysicalObject -->
+
+    <owl:Class rdf:about="&pwrelations2;NonAgentivePhysicalObject">
+        <rdfs:subClassOf rdf:resource="&pwrelations2;PhysicalObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#NonPhysicalEndurant -->
+
+    <owl:Class rdf:about="&pwrelations2;NonPhysicalEndurant">
+        <rdfs:subClassOf rdf:resource="&pwrelations2;Endurant"/>
+        <owl:disjointWith rdf:resource="&pwrelations2;PysicalEndurant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#NonPhysicalObject -->
+
+    <owl:Class rdf:about="&pwrelations2;NonPhysicalObject">
+        <rdfs:subClassOf rdf:resource="&pwrelations2;NonPhysicalEndurant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#Particular -->
+
+    <owl:Class rdf:about="&pwrelations2;Particular"/>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#Perdurant -->
+
+    <owl:Class rdf:about="&pwrelations2;Perdurant">
+        <rdfs:subClassOf rdf:resource="&pwrelations2;Particular"/>
+        <owl:disjointWith rdf:resource="&pwrelations2;Quality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#PhysicalObject -->
+
+    <owl:Class rdf:about="&pwrelations2;PhysicalObject">
+        <rdfs:subClassOf rdf:resource="&pwrelations2;PysicalEndurant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#PysicalEndurant -->
+
+    <owl:Class rdf:about="&pwrelations2;PysicalEndurant">
+        <rdfs:subClassOf rdf:resource="&pwrelations2;Endurant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#Quality -->
+
+    <owl:Class rdf:about="&pwrelations2;Quality">
+        <rdfs:subClassOf rdf:resource="&pwrelations2;Particular"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#Region -->
+
+    <owl:Class rdf:about="&pwrelations2;Region">
+        <rdfs:subClassOf rdf:resource="&pwrelations2;Abstract"/>
+        <owl:disjointWith rdf:resource="&pwrelations2;Set"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#Set -->
+
+    <owl:Class rdf:about="&pwrelations2;Set">
+        <rdfs:subClassOf rdf:resource="&pwrelations2;Abstract"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/pwrelations.owl#SocialObject -->
+
+    <owl:Class rdf:about="&pwrelations2;SocialObject">
+        <rdfs:subClassOf rdf:resource="&pwrelations2;NonPhysicalObject"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+
