@@ -6,4 +6,3 @@ public class Tutorial {
         .create("http://www.meteck.org/files/ontologies/ncs.owl");
 
 }
-
