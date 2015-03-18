@@ -4,31 +4,42 @@
  * and open the template in the editor.
  */
 package testie;
-import org.semanticweb.owlapi.model.IRI;
 import java.io.File;
-import java.util.Set;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLClassExpression;
-import org.semanticweb.owlapi.model.OWLObject;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.util.AutoIRIMapper;
 
-public class Testie {
-    static File owlFile = new File("C:/Users/Ntokozo/Google Drive/School Isht/CS Honours/OE/MiniProj/ontologies/ncs.owl");
-    public static final IRI ncs_iri = IRI.create(owlFile);
-    //OWLDataFactory df = OWLManager.getOWLDataFactory();
-
-
-    public static void main(String[] args){
-        OWLClassExpression root;
-        try{
-            OWLObject l;
-            Set<OWLClass> classes;
-            classes = ncs_iri.getClassesInSignature();
-            System.out.println(classes.toArray()[0]);
-            //root = (OWLClassExpression) ncs_iri.getNestedClassExpressions();
-            //System.out.println("Casted yo.");
-            //System.out.println(root.getClassExpressionType().toString());
-            System.out.println(ncs_iri.getScheme());
-        }catch(Exception e){System.out.println("Not casted yo");}
-    }
+public class Testie{
+    public static final String owlfile = "res.owl";
+    public static final IRI ncs_iri = IRI.create("http://www.meteck.org/files/ontologies/ncs.owl");
     
+    OWLDataFactory df = OWLManager.getOWLDataFactory();
+    
+    /*public OWLOntologyManager create(){
+        OWLOntologyManager ontman = OWLManager.createOWLOntologyManager();
+        ontman.addIRIMapper(new AutoIRIMapper(new File(owlfile),true));
+        return ontman;
+    }*/
+    
+    public static void main(String[] args){
+        try {
+            Testie test = new Testie();
+            //OWLOntologyManager owlman = test.create();
+            OWLOntologyManager owlman = OWLManager.createOWLOntologyManager();
+            OWLOntology owl = owlman.loadOntologyFromOntologyDocument(IRI.create(Testie.class.getResource(owlfile)));
+            
+            // equivalent to for(OWLClass cls : owl.getClassesInSignature()) <~~ some fancy ass functional isht
+            owl.getClassesInSignature().stream().forEach((cls) -> {
+                System.out.println(cls);
+            });
+        } catch (OWLOntologyCreationException ex) {
+            Logger.getLogger(Testie.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
