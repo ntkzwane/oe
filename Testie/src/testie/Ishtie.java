@@ -80,4 +80,23 @@ public class Ishtie {
     public String getPluralization(OWLClass clazz, OWLClass nounClass){
         return null;
     }
+    
+    /**
+     * Check if the axiom has negation. Just check if the relation
+     * contaions a 'not'.
+     * @param axmiomHead the axiom head (relation) to be checked to be checked
+     * \TODO
+     */
+    public boolean checkNegation(String axmiomHead){
+        return false;
+    }
+    
+    /**
+     * Get the first character of the first word
+     * @param word
+     * \TODO
+     */
+    public char getFirstChar(String word){
+        return ' ';
+    }
 }
