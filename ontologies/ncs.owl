@@ -3,8 +3,8 @@
 
 <!DOCTYPE rdf:RDF [
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY dc "http://purl.org/dc/elements/1.1/#" >
     <!ENTITY dcr "http://www.isocat.org/ns/dcr.rdf#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/#" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
@@ -14,20 +14,20 @@
 
 <rdf:RDF xmlns="http://www.meteck.org/files/ontologies/ncs#"
      xml:base="http://www.meteck.org/files/ontologies/ncs"
-     xmlns:dc="http://purl.org/dc/elements/1.1/#"
      xmlns:dcr="http://www.isocat.org/ns/dcr.rdf#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:description="http://purl.org/dc/elements/1.1/description#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+     xmlns:description="http://purl.org/dc/elements/1.1/description#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/#">
     <owl:Ontology rdf:about="http://www.meteck.org/files/ontologies/ncs">
+        <owl:versionInfo>This is the first version of the ontology Noun Class System (NCS).</owl:versionInfo>
+        <rdfs:comment>This ontology models the noun class system of the Bantu languages. The primary function of the ontology  is to annonate lexical items on the Semantic Web with noun class information to be used by applications in tasks such as ontology-based Natural Language Generation. </rdfs:comment>
         <description:creator>Maria Keet</description:creator>
         <description:creator>Catherine Chavula</description:creator>
         <rdfs:seeAlso xml:lang="en">The ontology is described in:
 Chavula, C., Keet, C.M. Is Lemon Sufficient for Building Multilingual Ontologies for Bantu Languages? 11th OWL: Experiences and Directions Workshop (OWLED’14). Riva del Garda, Italy, Oct 17-18, 2014. CEUR-WS.</rdfs:seeAlso>
-        <rdfs:comment>This ontology models the noun class system of the Bantu languages. The primary function of the ontology  is to annonate lexical items on the Semantic Web with noun class information to be used by applications in tasks such as ontology-based Natural Language Generation. </rdfs:comment>
-        <owl:versionInfo>This is the first version of the ontology Noun Class System (NCS).</owl:versionInfo>
         <owl:versionIRI rdf:resource="http://www.meteck.org/files/ontologies/ncs"/>
     </owl:Ontology>
     
@@ -67,6 +67,15 @@ Chavula, C., Keet, C.M. Is Lemon Sufficient for Building Multilingual Ontologies
     
 
 
+    <!-- http://www.bantu-semantic-web/ontologies/ncs/hasNounClass -->
+
+    <owl:ObjectProperty rdf:about="http://www.bantu-semantic-web/ontologies/ncs/hasNounClass">
+        <rdfs:domain rdf:resource="http://www.meteck.org/files/ontologies/ncs#Noun"/>
+        <rdfs:range rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.meteck.org/files/ontologies/ncs#hasGender -->
 
     <owl:ObjectProperty rdf:about="http://www.meteck.org/files/ontologies/ncs#hasGender">
@@ -96,15 +105,6 @@ Chavula, C., Keet, C.M. Is Lemon Sufficient for Building Multilingual Ontologies
     <owl:ObjectProperty rdf:about="http://www.meteck.org/files/ontologies/ncs#hasSingular">
         <owl:inverseOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#hasPlural"/>
         <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.bantu-semantic-web/ontologies/ncs/hasNounClass -->
-
-    <owl:ObjectProperty rdf:about="http://www.bantu-semantic-web/ontologies/ncs/hasNounClass">
-        <rdfs:domain rdf:resource="http://www.meteck.org/files/ontologies/ncs#Noun"/>
-        <rdfs:range rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
     </owl:ObjectProperty>
     
 
@@ -398,8 +398,8 @@ Chavula, C., Keet, C.M. Is Lemon Sufficient for Building Multilingual Ontologies
 
     <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Feminine">
         <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#Gender"/>
-        <dcr:datcat>http://www.isocat.org/datcat/DC-1880</dcr:datcat>
         <dcr:datcat>http://www.isocat.org/datcat/DC-247</dcr:datcat>
+        <dcr:datcat>http://www.isocat.org/datcat/DC-1880</dcr:datcat>
     </owl:Class>
     
 
@@ -435,8 +435,8 @@ Chavula, C., Keet, C.M. Is Lemon Sufficient for Building Multilingual Ontologies
 
     <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Neuter">
         <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#Gender"/>
-        <dcr:datcat>http://www.isocat.org/datcat/DC-248</dcr:datcat>
         <dcr:datcat>http://www.isocat.org/datcat/DC-1884</dcr:datcat>
+        <dcr:datcat>http://www.isocat.org/datcat/DC-248</dcr:datcat>
     </owl:Class>
     
 
@@ -551,10 +551,39 @@ Chavula, C., Keet, C.M. Is Lemon Sufficient for Building Multilingual Ontologies
 
     <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#SingularNumber">
         <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#Number"/>
-        <rdfs:comment>Value that expresses one object.</rdfs:comment>
         <dcr:datcat>http://www.isocat.org/datcat/DC-1387</dcr:datcat>
         <dcr:datcat>http://www.isocat.org/datcat/DC-252</dcr:datcat>
+        <rdfs:comment>Value that expresses one object.</rdfs:comment>
     </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/ncs#m -->
+
+    <owl:NamedIndividual rdf:about="http://www.meteck.org/files/ontologies/ncs#m">
+        <rdf:type rdf:resource="http://www.meteck.org/files/ontologies/ncs#Class1"/>
+        <rdf:type rdf:resource="http://www.meteck.org/files/ontologies/ncs#Class3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/ncs#mu -->
+
+    <owl:NamedIndividual rdf:about="http://www.meteck.org/files/ontologies/ncs#mu">
+        <rdf:type rdf:resource="http://www.meteck.org/files/ontologies/ncs#Class1"/>
+        <rdf:type rdf:resource="http://www.meteck.org/files/ontologies/ncs#Class3"/>
+    </owl:NamedIndividual>
     
 
 
@@ -609,5 +638,5 @@ Chavula, C., Keet, C.M. Is Lemon Sufficient for Building Multilingual Ontologies
 
 
 
-<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
 

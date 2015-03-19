@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1426333801065" name="http://www.meteck.org/files/ontologies/OWLPathS.owl" uri="OWLPathS.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1426333801065" name="http://www.meteck.org/files/ontologies/metamodelCDML.owl" uri="metamodelCDML.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1426333801065" name="http://www.meteck.org/files/ontologies/ncs" uri="ncs.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1426333801065" name="http://www.meteck.org/files/ontologies/stuff-bfo11.owl" uri="stuff-bfo11.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1426333801065" name="http://www.meteck.org/files/ontologies/stuff-dolcelite.owl" uri="stuff-dolcelite.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1426333801065" name="duplicate:http://www.meteck.org/files/ontologies/stuff.owl" uri="stuff-example.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1426333801065" name="duplicate:http://www.meteck.org/files/ontologies/stuff.owl" uri="stuff.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1426333801065" name="http://www.semanticweb.org/ontologies/2010/3/pwrelations.owl" uri="pwrelations.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1426677353539" name="http://www.meteck.org/files/ontologies/OWLPathS.owl" uri="OWLPathS.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1426677353539" name="http://www.meteck.org/files/ontologies/metamodelCDML.owl" uri="metamodelCDML.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1426677353539" name="duplicate:http://www.meteck.org/files/ontologies/ncs" uri="ncs.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1426677353539" name="duplicate:http://www.meteck.org/files/ontologies/ncs" uri="ncs_orig.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1426677353539" name="http://www.meteck.org/files/ontologies/stuff-bfo11.owl" uri="stuff-bfo11.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1426677353539" name="http://www.meteck.org/files/ontologies/stuff-dolcelite.owl" uri="stuff-dolcelite.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1426677353539" name="duplicate:http://www.meteck.org/files/ontologies/stuff.owl" uri="stuff-example.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1426677353539" name="duplicate:http://www.meteck.org/files/ontologies/stuff.owl" uri="stuff.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1426677353539" name="http://www.semanticweb.org/ontologies/2010/3/pwrelations.owl" uri="pwrelations.owl"/>
     </group>
 </catalog>

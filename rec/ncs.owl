@@ -1,613 +1,431 @@
-<?xml version="1.0"?>
-
-
-<!DOCTYPE rdf:RDF [
-    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY dc "http://purl.org/dc/elements/1.1/#" >
-    <!ENTITY dcr "http://www.isocat.org/ns/dcr.rdf#" >
-    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-    <!ENTITY description "http://purl.org/dc/elements/1.1/description#" >
-]>
-
-
-<rdf:RDF xmlns="http://www.meteck.org/files/ontologies/ncs#"
-     xml:base="http://www.meteck.org/files/ontologies/ncs"
-     xmlns:dc="http://purl.org/dc/elements/1.1/#"
-     xmlns:dcr="http://www.isocat.org/ns/dcr.rdf#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:description="http://purl.org/dc/elements/1.1/description#"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-    <owl:Ontology rdf:about="http://www.meteck.org/files/ontologies/ncs">
-        <description:creator>Maria Keet</description:creator>
-        <description:creator>Catherine Chavula</description:creator>
-        <rdfs:seeAlso xml:lang="en">The ontology is described in:
-Chavula, C., Keet, C.M. Is Lemon Sufficient for Building Multilingual Ontologies for Bantu Languages? 11th OWL: Experiences and Directions Workshop (OWLED’14). Riva del Garda, Italy, Oct 17-18, 2014. CEUR-WS.</rdfs:seeAlso>
-        <rdfs:comment>This ontology models the noun class system of the Bantu languages. The primary function of the ontology  is to annonate lexical items on the Semantic Web with noun class information to be used by applications in tasks such as ontology-based Natural Language Generation. </rdfs:comment>
-        <owl:versionInfo>This is the first version of the ontology Noun Class System (NCS).</owl:versionInfo>
-        <owl:versionIRI rdf:resource="http://www.meteck.org/files/ontologies/ncs"/>
-    </owl:Ontology>
-    
-
-
-    <!-- 
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<rdf:RDF xmlns="http://www.meteck.org/files/ontologies/ncs#" xmlns:dc="http://purl.org/dc/elements/1.1/#" xmlns:dcr="http://www.isocat.org/ns/dcr.rdf#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:description="http://purl.org/dc/elements/1.1/description#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xml:base="http://www.meteck.org/files/ontologies/ncs">
+<script id="tinyhippos-injected"/>
+<owl:Ontology rdf:about="http://www.meteck.org/files/ontologies/ncs">
+<description:creator>Maria Keet</description:creator>
+<description:creator>Catherine Chavula</description:creator>
+<rdfs:seeAlso xml:lang="en">
+The ontology is described in: Chavula, C., Keet, C.M. Is Lemon Sufficient for Building Multilingual Ontologies for Bantu Languages? 11th OWL: Experiences and Directions Workshop (OWLED’14). Riva del Garda, Italy, Oct 17-18, 2014. CEUR-WS.
+</rdfs:seeAlso>
+<rdfs:comment>
+This ontology models the noun class system of the Bantu languages. The primary function of the ontology is to annonate lexical items on the Semantic Web with noun class information to be used by applications in tasks such as ontology-based Natural Language Generation.
+</rdfs:comment>
+<owl:versionInfo>
+This is the first version of the ontology Noun Class System (NCS).
+</owl:versionInfo>
+<owl:versionIRI rdf:resource="http://www.meteck.org/files/ontologies/ncs"/>
+</owl:Ontology>
+<!--
+ 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Annotation properties
     //
     ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://purl.org/dc/elements/1.1/description#creator -->
-
-    <owl:AnnotationProperty rdf:about="&description;creator"/>
-    
-
-
-    <!-- http://www.isocat.org/ns/dcr.rdf#datcat -->
-
-    <owl:AnnotationProperty rdf:about="&dcr;datcat"/>
-    
-
-
-    <!-- 
+     
+-->
+<!--
+ http://purl.org/dc/elements/1.1/description#creator 
+-->
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description#creator"/>
+<!--  http://www.isocat.org/ns/dcr.rdf#datcat  -->
+<owl:AnnotationProperty rdf:about="http://www.isocat.org/ns/dcr.rdf#datcat"/>
+<!--
+ 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Object Properties
     //
     ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#hasGender -->
-
-    <owl:ObjectProperty rdf:about="http://www.meteck.org/files/ontologies/ncs#hasGender">
-        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#hasNumber -->
-
-    <owl:ObjectProperty rdf:about="http://www.meteck.org/files/ontologies/ncs#hasNumber">
-        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#hasPlural -->
-
-    <owl:ObjectProperty rdf:about="http://www.meteck.org/files/ontologies/ncs#hasPlural">
-        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#hasSingular -->
-
-    <owl:ObjectProperty rdf:about="http://www.meteck.org/files/ontologies/ncs#hasSingular">
-        <owl:inverseOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#hasPlural"/>
-        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.bantu-semantic-web/ontologies/ncs/hasNounClass -->
-
-    <owl:ObjectProperty rdf:about="http://www.bantu-semantic-web/ontologies/ncs/hasNounClass">
-        <rdfs:domain rdf:resource="http://www.meteck.org/files/ontologies/ncs#Noun"/>
-        <rdfs:range rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- 
+     
+-->
+<!--
+ http://www.meteck.org/files/ontologies/ncs#hasGender 
+-->
+<owl:ObjectProperty rdf:about="http://www.meteck.org/files/ontologies/ncs#hasGender">
+<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+<!--
+ http://www.meteck.org/files/ontologies/ncs#hasNumber 
+-->
+<owl:ObjectProperty rdf:about="http://www.meteck.org/files/ontologies/ncs#hasNumber">
+<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+<!--
+ http://www.meteck.org/files/ontologies/ncs#hasPlural 
+-->
+<owl:ObjectProperty rdf:about="http://www.meteck.org/files/ontologies/ncs#hasPlural">
+<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+<!--
+ http://www.meteck.org/files/ontologies/ncs#hasSingular 
+-->
+<owl:ObjectProperty rdf:about="http://www.meteck.org/files/ontologies/ncs#hasSingular">
+<owl:inverseOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#hasPlural"/>
+<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+<!--
+ http://www.bantu-semantic-web/ontologies/ncs/hasNounClass 
+-->
+<owl:ObjectProperty rdf:about="http://www.bantu-semantic-web/ontologies/ncs/hasNounClass">
+<rdfs:domain rdf:resource="http://www.meteck.org/files/ontologies/ncs#Noun"/>
+<rdfs:range rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+</owl:ObjectProperty>
+<!--
+ 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Classes
     //
     ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class1 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class1">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/ncs#hasPlural"/>
-                <owl:allValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/ncs#Class2"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">The Bantu noun class one, is associated with humans and other animates. It also serves as the singular form of class 2.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class10 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class10">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class11 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class11">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class12 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class12">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class13 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class13">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class14 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class14">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class15 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class15">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-        <rdfs:comment xml:lang="en">Infinitives.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class16 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class16">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-        <rdfs:comment xml:lang="en">This class is a locative with no plural form. </rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class17 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class17">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class18 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class18">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-        <rdfs:comment xml:lang="en">This class is locative with no plural form.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class19 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class19">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-        <rdfs:comment xml:lang="en">This class is locative with no plural form.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class1a -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class1a">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class2 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class2">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-        <rdfs:comment xml:lang="en">This class is the plural form of class 1.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class20 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class20">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class21 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class21">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class22 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class22">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class23 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class23">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class2a -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class2a">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-        <rdfs:comment xml:lang="en">This class is the plural form of some elements in class 1 and class 1a . This class is not available in some Bantu languages.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class2b -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class2b">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class3 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class3">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/ncs#hasPlural"/>
-                <owl:allValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/ncs#Class4"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class3a -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class3a">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class4 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class4">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/ncs#hasSingular"/>
-                <owl:allValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/ncs#Class3"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class5 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class5">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/ncs#hasPlural"/>
-                <owl:allValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/ncs#Class6"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class6 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class6">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/ncs#hasSingular"/>
-                <owl:allValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/ncs#Class5"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class7 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class7">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/ncs#hasPlural"/>
-                <owl:allValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/ncs#Class8"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class8 -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class8">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/ncs#hasSingular"/>
-                <owl:allValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/ncs#Class7"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Class9a -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class9a">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#CommonNoun -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#CommonNoun">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#Noun"/>
-        <owl:disjointWith rdf:resource="http://www.meteck.org/files/ontologies/ncs#ProperNoun"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Feminine -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Feminine">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#Gender"/>
-        <dcr:datcat>http://www.isocat.org/datcat/DC-1880</dcr:datcat>
-        <dcr:datcat>http://www.isocat.org/datcat/DC-247</dcr:datcat>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Gender -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Gender">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NominalClassification"/>
-        <rdfs:comment>Gender of nouns</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Masculine -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Masculine">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#Gender"/>
-        <dcr:datcat>http://www.isocat.org/datcat/DC-246</dcr:datcat>
-        <dcr:datcat>http://www.isocat.org/datcat/DC-1883</dcr:datcat>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#MorphoSyntacticProperty -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#MorphoSyntacticProperty">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#Property"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Neuter -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Neuter">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#Gender"/>
-        <dcr:datcat>http://www.isocat.org/datcat/DC-248</dcr:datcat>
-        <dcr:datcat>http://www.isocat.org/datcat/DC-1884</dcr:datcat>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#NominalClassification -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#NominalClassification">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#MorphoSyntacticProperty"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Noun -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Noun">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#PartOfSpeech"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.bantu-semantic-web/ontologies/ncs/hasNounClass"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class1"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class10"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class11"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class12"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class13"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class14"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class15"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class16"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class17"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class18"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class19"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class1a"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class2"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class20"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class21"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class22"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class23"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class2a"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class2b"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class3"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class3a"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class4"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class5"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class6"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class7"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class8"/>
-                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class9a"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#NounClass -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#NounClass">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NominalClassification"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Number -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Number">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#MorphoSyntacticProperty"/>
-        <rdfs:comment>Grammatical number referring to singular and plural.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#PartOfSpeech -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#PartOfSpeech">
-        <rdfs:comment>The part of speech of a lexical item.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#PluralNumber -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#PluralNumber">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#Number"/>
-        <owl:disjointWith rdf:resource="http://www.meteck.org/files/ontologies/ncs#SingularNumber"/>
-        <dcr:datcat>http://www.isocat.org/datcat/DC-1354</dcr:datcat>
-        <dcr:datcat>http://www.isocat.org/datcat/DC-253</dcr:datcat>
-        <rdfs:comment>Value that expresses more than one object.
+     
+-->
+<!--  http://www.meteck.org/files/ontologies/ncs#Class1  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class1">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/ncs#hasPlural"/>
+<owl:allValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/ncs#Class2"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:comment xml:lang="en">
+The Bantu noun class one, is associated with humans and other animates. It also serves as the singular form of class 2.
 </rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#ProperNoun -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#ProperNoun">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#Noun"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#Property -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Property"/>
-    
-
-
-    <!-- http://www.meteck.org/files/ontologies/ncs#SingularNumber -->
-
-    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#SingularNumber">
-        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#Number"/>
-        <rdfs:comment>Value that expresses one object.</rdfs:comment>
-        <dcr:datcat>http://www.isocat.org/datcat/DC-1387</dcr:datcat>
-        <dcr:datcat>http://www.isocat.org/datcat/DC-252</dcr:datcat>
-    </owl:Class>
-    
-
-
-    <!-- 
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class10  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class10">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class11  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class11">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class12  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class12">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class13  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class13">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class14  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class14">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class15  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class15">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+<rdfs:comment xml:lang="en">Infinitives.</rdfs:comment>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class16  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class16">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+<rdfs:comment xml:lang="en">This class is a locative with no plural form.</rdfs:comment>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class17  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class17">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class18  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class18">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+<rdfs:comment xml:lang="en">This class is locative with no plural form.</rdfs:comment>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class19  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class19">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+<rdfs:comment xml:lang="en">This class is locative with no plural form.</rdfs:comment>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class1a  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class1a">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class2  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class2">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+<rdfs:comment xml:lang="en">This class is the plural form of class 1.</rdfs:comment>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class20  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class20">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class21  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class21">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class22  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class22">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class23  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class23">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class2a  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class2a">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+<rdfs:comment xml:lang="en">
+This class is the plural form of some elements in class 1 and class 1a . This class is not available in some Bantu languages.
+</rdfs:comment>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class2b  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class2b">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class3  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class3">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/ncs#hasPlural"/>
+<owl:allValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/ncs#Class4"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class3a  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class3a">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class4  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class4">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/ncs#hasSingular"/>
+<owl:allValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/ncs#Class3"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class5  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class5">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/ncs#hasPlural"/>
+<owl:allValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/ncs#Class6"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class6  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class6">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/ncs#hasSingular"/>
+<owl:allValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/ncs#Class5"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class7  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class7">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/ncs#hasPlural"/>
+<owl:allValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/ncs#Class8"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class8  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class8">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/ncs#hasSingular"/>
+<owl:allValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/ncs#Class7"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Class9a  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Class9a">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NounClass"/>
+</owl:Class>
+<!--
+ http://www.meteck.org/files/ontologies/ncs#CommonNoun 
+-->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#CommonNoun">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#Noun"/>
+<owl:disjointWith rdf:resource="http://www.meteck.org/files/ontologies/ncs#ProperNoun"/>
+</owl:Class>
+<!--
+ http://www.meteck.org/files/ontologies/ncs#Feminine 
+-->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Feminine">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#Gender"/>
+<dcr:datcat>http://www.isocat.org/datcat/DC-1880</dcr:datcat>
+<dcr:datcat>http://www.isocat.org/datcat/DC-247</dcr:datcat>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Gender  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Gender">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NominalClassification"/>
+<rdfs:comment>Gender of nouns</rdfs:comment>
+</owl:Class>
+<!--
+ http://www.meteck.org/files/ontologies/ncs#Masculine 
+-->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Masculine">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#Gender"/>
+<dcr:datcat>http://www.isocat.org/datcat/DC-246</dcr:datcat>
+<dcr:datcat>http://www.isocat.org/datcat/DC-1883</dcr:datcat>
+</owl:Class>
+<!--
+ http://www.meteck.org/files/ontologies/ncs#MorphoSyntacticProperty 
+-->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#MorphoSyntacticProperty">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#Property"/>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Neuter  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Neuter">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#Gender"/>
+<dcr:datcat>http://www.isocat.org/datcat/DC-248</dcr:datcat>
+<dcr:datcat>http://www.isocat.org/datcat/DC-1884</dcr:datcat>
+</owl:Class>
+<!--
+ http://www.meteck.org/files/ontologies/ncs#NominalClassification 
+-->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#NominalClassification">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#MorphoSyntacticProperty"/>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Noun  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Noun">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#PartOfSpeech"/>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.bantu-semantic-web/ontologies/ncs/hasNounClass"/>
+<owl:allValuesFrom>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class1"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class10"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class11"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class12"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class13"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class14"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class15"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class16"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class17"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class18"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class19"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class1a"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class2"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class20"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class21"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class22"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class23"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class2a"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class2b"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class3"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class3a"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class4"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class5"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class6"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class7"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class8"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class9a"/>
+</owl:unionOf>
+</owl:Class>
+</owl:allValuesFrom>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<!--
+ http://www.meteck.org/files/ontologies/ncs#NounClass 
+-->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#NounClass">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#NominalClassification"/>
+</owl:Class>
+<!--  http://www.meteck.org/files/ontologies/ncs#Number  -->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Number">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#MorphoSyntacticProperty"/>
+<rdfs:comment>
+Grammatical number referring to singular and plural.
+</rdfs:comment>
+</owl:Class>
+<!--
+ http://www.meteck.org/files/ontologies/ncs#PartOfSpeech 
+-->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#PartOfSpeech">
+<rdfs:comment>The part of speech of a lexical item.</rdfs:comment>
+</owl:Class>
+<!--
+ http://www.meteck.org/files/ontologies/ncs#PluralNumber 
+-->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#PluralNumber">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#Number"/>
+<owl:disjointWith rdf:resource="http://www.meteck.org/files/ontologies/ncs#SingularNumber"/>
+<dcr:datcat>http://www.isocat.org/datcat/DC-1354</dcr:datcat>
+<dcr:datcat>http://www.isocat.org/datcat/DC-253</dcr:datcat>
+<rdfs:comment>Value that expresses more than one object.</rdfs:comment>
+</owl:Class>
+<!--
+ http://www.meteck.org/files/ontologies/ncs#ProperNoun 
+-->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#ProperNoun">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#Noun"/>
+</owl:Class>
+<!--
+ http://www.meteck.org/files/ontologies/ncs#Property 
+-->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#Property"/>
+<!--
+ http://www.meteck.org/files/ontologies/ncs#SingularNumber 
+-->
+<owl:Class rdf:about="http://www.meteck.org/files/ontologies/ncs#SingularNumber">
+<rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/ncs#Number"/>
+<rdfs:comment>Value that expresses one object.</rdfs:comment>
+<dcr:datcat>http://www.isocat.org/datcat/DC-1387</dcr:datcat>
+<dcr:datcat>http://www.isocat.org/datcat/DC-252</dcr:datcat>
+</owl:Class>
+<!--
+ 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // General axioms
     //
     ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class10"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class11"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class12"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class13"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class14"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class15"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class16"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class17"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class18"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class19"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class1a"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class2"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class20"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class21"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class22"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class23"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class2a"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class2b"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class3"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class3a"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class4"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class5"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class6"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class7"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class8"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class9a"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Feminine"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Masculine"/>
-            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Neuter"/>
-        </owl:members>
-    </rdf:Description>
+     
+-->
+<rdf:Description>
+<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+<owl:members rdf:parseType="Collection">
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class10"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class11"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class12"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class13"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class14"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class15"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class16"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class17"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class18"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class19"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class1a"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class2"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class20"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class21"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class22"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class23"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class2a"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class2b"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class3"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class3a"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class4"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class5"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class6"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class7"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class8"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Class9a"/>
+</owl:members>
+</rdf:Description>
+<rdf:Description>
+<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+<owl:members rdf:parseType="Collection">
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Feminine"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Masculine"/>
+<rdf:Description rdf:about="http://www.meteck.org/files/ontologies/ncs#Neuter"/>
+</owl:members>
+</rdf:Description>
 </rdf:RDF>
-
-
-
-<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
-
+<!--
+ Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net 
+-->
