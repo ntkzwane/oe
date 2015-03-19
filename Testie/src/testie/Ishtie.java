@@ -42,9 +42,19 @@ public class Ishtie {
         rightCLass = df.getOWLClass("#"+arguments[1],prefixManager);
     }
     
+    /** Generate the verbalisation of the given taxonomic subsumption, using the
+     * algorithm developed by C. Maria Keet and Langa Khumalo: Basics for a grammar engine
+     * to verbalize logical thories in isiZulu
+     * @param 
+     * @return 
+     */
+    public String verbaliseTaxonomicSubs(){
+        return null;
+    }
+    
     /**
      * Get the sublclass of the given class.
-     * 
+     * @return \TODO FILL THIS IN
      * \TODO -- THIS WILL BE ONE OF THE LAST THINGS WE DO
      */
     public OWLClass getSubclass(/* apparently an axiom */){
@@ -53,7 +63,7 @@ public class Ishtie {
     
     /**
      * Get the superclass of the given class.
-     * 
+     * @return \TODO FILL THIS IN
      * \TODO -- THIS WILL BE ONE OF THE LAST THINGS WE DO
      */
     public OWLClass getSuperclass(/* apparently an axiom */){
@@ -61,9 +71,10 @@ public class Ishtie {
     }
     
     /**
-     * Get the noun class of the given class. Performs a lookup
+     * Lookup the noun class of the given class. Performs a lookup
      * in the noun class table
      * @param clazz the class whos noun class will be returned
+     * @return \TODO FILL THIS IN
      * \TODO -- THIS WILL BE ONE OF THE LAST THINGS WE DO
      */
     public String getNounClass(OWLClass clazz){
@@ -71,7 +82,7 @@ public class Ishtie {
     }
     
     /**
-     * Get the plural version of the current word. Check which
+     * Lookup the plural version of the current word. Check which
      * noun class it belongs to and retrieve the prefix
      * @param clazz the current class wich you are checking
      * @param nounClass the current nounclass of the class clazz
@@ -85,6 +96,7 @@ public class Ishtie {
      * Check if the axiom has negation. Just check if the relation
      * contaions a 'not'.
      * @param axmiomHead the axiom head (relation) to be checked to be checked
+     * @return \TODO FILL THIS IN
      * \TODO -- EASY
      */
     public boolean checkNegation(String axmiomHead){
@@ -92,8 +104,9 @@ public class Ishtie {
     }
     
     /**
-     * Get the first character of the first word
+     * Lookup the first character of the first word.
      * @param word
+     * @return \TODO FILL THIS IN
      * \TODO -- EASY
      */
     public char getFirstChar(String word){
@@ -101,11 +114,17 @@ public class Ishtie {
     }
     
     /**
-     * Lookup the negative subject concord for the given noun class
+     * Lookup the negative subject concord for the given noun class.
      * @param nounClass the noun class of the current word
+     * @return \TODO FILL THIS IN
      * \TODO -- THIS WILL BE ONE OF THE LAST THINGS WE DO
      */
     public String getNSC(OWLClass nounClass){
         return null;
     }
+    
+    /**
+     * Lookup the pronomial for the given noun class.
+     * 
+     */
 }

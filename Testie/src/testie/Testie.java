@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package testie;
-import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collections;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
@@ -12,12 +13,10 @@ import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLAnnotationObjectVisitorEx;
 import org.semanticweb.owlapi.model.OWLAnnotationProperty;
 import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLException;
 import org.semanticweb.owlapi.model.OWLLiteral;
-import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLObjectPropertyExpression;
 import org.semanticweb.owlapi.model.OWLObjectSomeValuesFrom;
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -56,18 +55,19 @@ public class Testie{
         System.out.println("Done walking");
     }
     
-    public void printClasses(OWLOntology ont){
-            // equivalent to for(OWLClass cls : owl.getClassesInSignature()) <~~ some fancy ass functional isht
-         ont.getClassesInSignature().stream().forEach((cls) -> {
+    public void printClasses(OWLOntology ont) throws URISyntaxException{
+            for(OWLEntity cls : ont.getEntitiesInSignature(IRI.create(new URI ("http://www.meteck.org/files/ontologies/ncs.owl")))){
+       
              System.out.println(cls);
-             System.out.println("   " + cls.getObjectPropertiesInSignature());
-             System.out.println(cls.toStringID());             
+             //System.out.println("   " + cls.getObjectPropertiesInSignature());
+             
+             System.out.println();             
              /*try{
                 Set<OWLNamedIndividual> ind = cls.getIndividualsInSignature();
                 System.out.println(" -- numinds -- " + ind.size());//System.out.println(" --   " + ind.iterator().next());
                 System.out.println(" -- individual printed");
              }catch(Exception e){System.out.println("No individual");}*/
-         }); 
+            } 
     }
     
     public void mytestie(OWLOntology ont){
@@ -140,8 +140,8 @@ public class Testie{
             
             //test.testReadAnnotations(ont);
             //print the classes
-            test.mytestie(ont);
-            //test.printClasses(ont);
+            //test.mytestie(ont);
+            test.printClasses(ont);
             System.out.println();
             // walk the classes
             //test.walkOnt(ont);
