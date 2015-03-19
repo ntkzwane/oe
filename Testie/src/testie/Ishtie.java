@@ -45,7 +45,7 @@ public class Ishtie {
     /**
      * Get the sublclass of the given class.
      * 
-     * \TODO
+     * \TODO -- THIS WILL BE ONE OF THE LAST THINGS WE DO
      */
     public OWLClass getSubclass(/* apparently an axiom */){
         return null;
@@ -54,7 +54,7 @@ public class Ishtie {
     /**
      * Get the superclass of the given class.
      * 
-     * \TODO
+     * \TODO -- THIS WILL BE ONE OF THE LAST THINGS WE DO
      */
     public OWLClass getSuperclass(/* apparently an axiom */){
         return null;
@@ -64,7 +64,7 @@ public class Ishtie {
      * Get the noun class of the given class. Performs a lookup
      * in the noun class table
      * @param clazz the class whos noun class will be returned
-     * \TODO
+     * \TODO -- THIS WILL BE ONE OF THE LAST THINGS WE DO
      */
     public String getNounClass(OWLClass clazz){
         return null;
@@ -75,7 +75,7 @@ public class Ishtie {
      * noun class it belongs to and retrieve the prefix
      * @param clazz the current class wich you are checking
      * @param nounClass the current nounclass of the class clazz
-     * \TODO
+     * \TODO -- THIS WILL BE ONE OF THE LAST THINGS WE DO
      */
     public String getPluralization(OWLClass clazz, OWLClass nounClass){
         return null;
@@ -85,7 +85,7 @@ public class Ishtie {
      * Check if the axiom has negation. Just check if the relation
      * contaions a 'not'.
      * @param axmiomHead the axiom head (relation) to be checked to be checked
-     * \TODO
+     * \TODO -- EASY
      */
     public boolean checkNegation(String axmiomHead){
         return false;
@@ -94,9 +94,18 @@ public class Ishtie {
     /**
      * Get the first character of the first word
      * @param word
-     * \TODO
+     * \TODO -- EASY
      */
     public char getFirstChar(String word){
         return ' ';
+    }
+    
+    /**
+     * Lookup the negative subject concord for the given noun class
+     * @param nounClass the noun class of the current word
+     * \TODO -- THIS WILL BE ONE OF THE LAST THINGS WE DO
+     */
+    public String getNSC(OWLClass nounClass){
+        return null;
     }
 }
