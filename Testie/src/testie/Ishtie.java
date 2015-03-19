@@ -31,6 +31,7 @@ public class Ishtie {
      * verbalization
      * @param axiom_ binary axiom assumed to be of the form relation(class_1, class_2)
      * | not relation(class_1,class_2)
+     * \TODO
      */
     public Ishtie(String axiom_){
         String relation = axiom_.substring(0,axiom_.lastIndexOf("("));
@@ -43,7 +44,8 @@ public class Ishtie {
     
     /**
      * Get the sublclass of the given class.
-     * @param 
+     * 
+     * \TODO
      */
     public OWLClass getSubclass(/* apparently an axiom */){
         return null;
@@ -51,7 +53,8 @@ public class Ishtie {
     
     /**
      * Get the superclass of the given class.
-     * @param 
+     * 
+     * \TODO
      */
     public OWLClass getSuperclass(/* apparently an axiom */){
         return null;
@@ -61,6 +64,7 @@ public class Ishtie {
      * Get the noun class of the given class. Performs a lookup
      * in the noun class table
      * @param clazz the class whos noun class will be returned
+     * \TODO
      */
     public String getNounClass(OWLClass clazz){
         return null;
@@ -71,6 +75,7 @@ public class Ishtie {
      * noun class it belongs to and retrieve the prefix
      * @param clazz the current class wich you are checking
      * @param nounClass the current nounclass of the class clazz
+     * \TODO
      */
     public String getPluralization(OWLClass clazz, OWLClass nounClass){
         return null;
