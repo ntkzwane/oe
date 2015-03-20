@@ -56,7 +56,7 @@ public class ZuluVerbOnt {
      * @param leftC the first class in the axiom following the format Class#.instance
      * @param rightC the second class in the axiom following the format Class#.instance
      */
-    public void setUpverbalizer(String type, String leftC, String rightC){
+    public String setUpverbalizer(String type, String leftC, String rightC){
         String[] class_1_parts = leftC.split("\\.");
         String[] class_2_parts = rightC.split("\\.");
         // create the owl literals from the input given
@@ -67,6 +67,8 @@ public class ZuluVerbOnt {
         try{
             ont = owlman.loadOntologyFromOntologyDocument(iri_relative);
         }catch(Exception e){System.err.println("Could not load ontology file: "+iri_relative);}
+        
+        return verbalise();
     }
     
     /**
@@ -145,6 +147,7 @@ public class ZuluVerbOnt {
         String verbalisation = "";
         String suffix = "";
         if(false){
+            
             // \TODO -- FIX THIS, ASK PAUL WHAT IT MEANS
         }else{
             if(true){// \TODO -- FIX THIS TOO, WHAT MEAN
@@ -171,6 +174,23 @@ public class ZuluVerbOnt {
         }
         verbalisation = convertLiteralToString(leftInstance) + " " + suffix;
         return verbalisation;
+    }
+    
+    public String concat(String left, String right){
+        return left + " kanye " +getConnector(right.charAt(0))+right.substring(1,right.length());
+    }
+    
+    public String getConnector(char tester){
+        switch(Character.toLowerCase(tester)){
+            case 'i':
+                return "ne";
+            case 'u':
+                return "no";
+            case 'a':
+                return "na";
+            default:
+                return "This isiZulu noun is not well-formed.";
+        }
     }
     
     public String verbaliseTaxonomicExist(){
