@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.meteck.org/files/ontologies/stuff-dolcelite.owl#"
+     xml:base="http://www.meteck.org/files/ontologies/stuff-dolcelite.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.meteck.org/files/ontologies/stuff-dolcelite.owl">
+        <owl:imports rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl"/>
+        <owl:imports rdf:resource="http://www.meteck.org/files/ontologies/stuff.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#part -->
+
+    <rdf:Description rdf:about="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#part">
+        <owl:equivalentProperty rdf:resource="http://www.meteck.org/files/ontologies/stuff.owl#hasPart"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#q-location -->
+
+    <rdf:Description rdf:about="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#q-location">
+        <rdfs:subPropertyOf rdf:resource="http://www.meteck.org/files/ontologies/stuff.owl#hasQuale"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/stuff.owl#hasPart -->
+
+    <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/stuff.owl#hasPart"/>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/stuff.owl#hasQuality -->
+
+    <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/stuff.owl#hasQuality">
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#has-quality"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/stuff.owl#inheresIn -->
+
+    <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/stuff.owl#inheresIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#generic-dependent"/>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#amount-of-matter -->
+
+    <rdf:Description rdf:about="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#amount-of-matter">
+        <owl:equivalentClass rdf:resource="http://www.meteck.org/files/ontologies/stuff.owl#Stuff"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#endurant -->
+
+    <rdf:Description rdf:about="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#endurant">
+        <owl:equivalentClass rdf:resource="http://www.meteck.org/files/ontologies/stuff.owl#Endurant"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant -->
+
+    <rdf:Description rdf:about="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant">
+        <owl:equivalentClass rdf:resource="http://www.meteck.org/files/ontologies/stuff.owl#Perdurant"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-endurant -->
+
+    <rdf:Description rdf:about="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-endurant">
+        <owl:equivalentClass rdf:resource="http://www.meteck.org/files/ontologies/stuff.owl#PhysicalEndurant"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-object -->
+
+    <rdf:Description rdf:about="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-object">
+        <owl:equivalentClass rdf:resource="http://www.meteck.org/files/ontologies/stuff.owl#PhysicalObject"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#quality -->
+
+    <rdf:Description rdf:about="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#quality">
+        <owl:equivalentClass rdf:resource="http://www.meteck.org/files/ontologies/stuff.owl#Quality"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#state -->
+
+    <rdf:Description rdf:about="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#state">
+        <owl:equivalentClass rdf:resource="http://www.meteck.org/files/ontologies/stuff.owl#State"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/stuff.owl#Endurant -->
+
+    <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/stuff.owl#Endurant"/>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/stuff.owl#Perdurant -->
+
+    <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/stuff.owl#Perdurant"/>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/stuff.owl#PhysicalEndurant -->
+
+    <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/stuff.owl#PhysicalEndurant"/>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/stuff.owl#PhysicalObject -->
+
+    <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/stuff.owl#PhysicalObject"/>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/stuff.owl#Quality -->
+
+    <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/stuff.owl#Quality"/>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/stuff.owl#Role -->
+
+    <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/stuff.owl#Role">
+        <rdfs:subClassOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#non-physical-endurant"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/stuff.owl#State -->
+
+    <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/stuff.owl#State"/>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/stuff.owl#Stuff -->
+
+    <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/stuff.owl#Stuff"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1426757023237" name="http://www.co-ode.org/ontologies/pizza/pizza.owl" uri="pizza.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1426757023237" name="http://www.meteck.org/files/ontologies/ncs" uri="ncs.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1426757023237" name="http://www.semanticweb.org/nickc/ontologies/2015/2/untitled-ontology-4" uri="res.owl"/>
+    </group>
+</catalog>
