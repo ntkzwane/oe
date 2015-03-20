@@ -215,12 +215,13 @@ public class ZuluVerbOnt {
     /**
      * Lookup the noun class of the given class. Performs a lookup
      * in the noun class table
-     * @param clazz the class whos noun class will be returned
+     * @param owlClass the class whos noun class will be returned
      * @return \TODO FILL THIS IN
      * \TODO -- THIS WILL BE ONE OF THE LAST THINGS WE DO
      */
-    public String getNounClass(OWLClass clazz){
-        return null;
+    public String getNounClass(OWLClass owlClass) {
+        String owlStringID = owlClass.toStringID();
+        return owlStringID.substring(owlStringID.indexOf ('#') + 1); 
     }
     
     /**
@@ -255,7 +256,6 @@ public class ZuluVerbOnt {
      * \TODO -- EASY
      */
     public boolean checkNegation(OWLAxiom axmiom){
-        // there exists a get negation method getNNF();
         return false;
     }
     
@@ -294,6 +294,7 @@ public class ZuluVerbOnt {
      * \TODO -- THIS WILL BE ONE OF THE LAST THINGS WE DO
      */
     public String getNSC(OWLClass nounClass){
+
         return null;
     }
     
@@ -301,4 +302,35 @@ public class ZuluVerbOnt {
      * Lookup the pronomial for the given noun class.
      * 
      */
+
+
+    /**
+     * Gets the concatenation of the augment and the prefix
+     * @param nounClass     the noun class of the word
+     * @result augmentedPrefix the concatenation of the augment and the prefix
+     */
+    public String[] getAugmentedPrefix (OWLClass nounClass) {
+        String className = getNounClass (nounClass);
+        String classID = className.substring(className.indexOf ("Class") + 5);
+        
+        // construct the augmented prefix
+        if (classID.equals("1") || classID.equals("3")) return "umu";
+        else if (classID.equals("2") ) return "aba"
+        else if (classID.equals("1a") || classID.equals("3a") ) return "u";
+        else if (classID.equals ("2a")) return "o";
+        else if (classID.equals("4")) return "imi";
+        else if (classID.equals("5")) return "ili";
+        else if (classID.equals("6")) return "ama";
+        else if (classID.equals("7")) return "isi";
+        else if (classID.equals("8")) return "izi";
+        else if (classID.equals("9")) return "in";
+        else if (classID.equals("9a")) return "i";
+        else if (classID.equals("10")) return "izin";
+        else if (classID.equals("11")) return "ulu";
+        else if (classID.equals("14")) return "ubu";
+        else if (classID.equals("15")) return "uku";
+        else if (classID.equals("17")) return "ku";
+        else return "";
+    }
 }
+

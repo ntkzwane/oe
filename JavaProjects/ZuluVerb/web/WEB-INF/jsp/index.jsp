@@ -3,7 +3,6 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="../templatemo_style.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <html>
@@ -17,22 +16,15 @@
         </div>
       </div>
         
+        
+        
       <div class="hero">
         <div class="row">
           <div class="large-12 columns intro-text">
-            <p>Hi there!<br>I take outdoor pictures.</p> 
+              <p useBean id="mybean" scope="session" class="../../../src/java/runIsh.java"> </p>
           </div>
         </div>
-      </div>
-
-      <div class="row about">
-        <div class="medium-6 large-8 columns">
-          <h4>About</h4>
-          <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
-        </div>
-        <div class="medium-6 large-4 columns">
-        </div>
-      </div>
+      </div> 
 
       <div class="row contact">
         <hr>
@@ -59,9 +51,6 @@
           </div>
         </div>
       </footer>
-      
-       
-      <script src="js/foundation/foundation.clearing.js"></script>
     
     </body>
 </html>
