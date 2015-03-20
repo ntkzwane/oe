@@ -13,11 +13,7 @@ public class Tutorial {
     public OWLOntologyManager create() {
         OWLOntologyManager m = OWLManager.createOWLOntologyManager();
 
-<<<<<<< HEAD
-}
-=======
         m.addIRIMapper(new AutoIRIMapper( new File("materializedOntologies"), true));
         return m;
     }
 }
->>>>>>> 1252b84cb71473d2c5d551bb0f2dc7dcaaefc809
