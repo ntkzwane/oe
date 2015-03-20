@@ -32,6 +32,7 @@ public class ZuluVerbOnt {
     public static OWLOntology ont;
     
     OWLAxiom axiom;
+    String axType;
     OWLClass leftClass;
     OWLClass rightClass;
     OWLLiteral leftInstance;
@@ -60,16 +61,37 @@ public class ZuluVerbOnt {
         rightInstance = df.getOWLLiteral(class_2_parts[1]);
         // create an owl axiom from the class types of the two literals
         setCurrentAxiom(type, class_1_parts[0], class_2_parts[0]);              System.out.println(" -- Axiom "+axiom);
+                                                                                System.out.println(axType);
+                                                                                System.out.println(leftClass);
+                                                                                System.out.println(rightClass);
+                                                                                System.out.println("");
         try{
             ont = owlman.loadOntologyFromOntologyDocument(iri_relative);
         }catch(Exception e){System.err.println("Could not load ontology file: "+iri_relative);}
     }
     
-    /** Generate the verbalisation of the given taxonomic subsumption, using the
-     * algorithm developed by C. Maria Keet and Langa Khumalo: Basics for a grammar engine
-     * to verbalize logical thories in isiZulu
-     * @param 
-     * @return 
+    /**
+     * Preform the verbalisation. The type will depend on the type of axiom given
+     */
+    public String verbalise(){
+        switch(axType.toLowerCase()){
+            case "subclassof":
+                return verbaliseTaxonomicSubs();
+            case "conjunction":
+                return verbaliseTaxonomicConj();
+            case "union":
+                return "nah";
+            default:
+                System.err.println("Unknown axiom type: "+axType);
+                return "nah";
+        }
+    }
+    
+    /** 
+     * Generate the verbalisation of the given taxonomic subsumption, using
+     * 'Algorithm 1' created by C. Maria Keet and Langa Khumalo: Basics for a grammar engine
+     * to verbalize logical theories in isiZulu
+     * @return the subsumption verbalisation in isiZulu
      */
     public String verbaliseTaxonomicSubs(){
         String verbalisation = "";
@@ -77,26 +99,68 @@ public class ZuluVerbOnt {
         if(checkNegation(axiom)){
             // \TODO do negation isht
         }else{
-            String l_class = converLiteralToString(leftInstance);
+            String l_class = convertLiteralToString(leftInstance);
             char augment = getFirstChar(l_class);
             switch(Character.toLowerCase(augment)){
                 case 'i':
-                    verbalisation = converLiteralToString(leftInstance) + " y" + converLiteralToString(rightInstance);
+                    verbalisation = convertLiteralToString(leftInstance) + " y" + convertLiteralToString(rightInstance);
                     break;
                 case 'a':
-                    verbalisation = converLiteralToString(leftInstance) + " ng" + converLiteralToString(rightInstance);
+                    verbalisation = convertLiteralToString(leftInstance) + " ng" + convertLiteralToString(rightInstance);
                     break;
                 case 'o':
-                    verbalisation = converLiteralToString(leftInstance) + " ng" + converLiteralToString(rightInstance);
+                    verbalisation = convertLiteralToString(leftInstance) + " ng" + convertLiteralToString(rightInstance);
                     break;
                 case 'u':
-                    verbalisation = converLiteralToString(leftInstance) + " ng" + converLiteralToString(rightInstance);
+                    verbalisation = convertLiteralToString(leftInstance) + " ng" + convertLiteralToString(rightInstance);
                     break;
                 default:
                     System.err.print("This isiZulu nown is not well-formed.");
             }
         }
         return verbalisation;
+    }
+    
+    /** 
+     * Generate the verbalisation of conjucntion in an axiom, using 'Algorithm 2'
+     * created by C. Maria Keet and Langa Khumalo: Basics for a grammar engine
+     * to verbalize logical theories in isiZulu
+     * @return the conjuction verbalisation in isiZulu
+     */
+    public String verbaliseTaxonomicConj(){
+        String verbalisation = "";
+        String suffix = "";
+        if(false){
+            // \TODO -- FIX THIS, ASK PAUL WHAT IT MEANS
+        }else{
+            if(true){// \TODO -- FIX THIS TOO, WHAT MEAN
+                String r_class = convertLiteralToString(rightInstance);
+                char augment = getFirstChar(r_class);
+                switch(Character.toLowerCase(augment)){
+                    case 'i':
+                        r_class = r_class.substring(1,r_class.length());
+                        suffix = "ne"+r_class;
+                        break;
+                    case 'u':
+                        r_class = r_class.substring(1,r_class.length());
+                        suffix = "no"+r_class;
+                        break;
+                    case 'a':
+                        r_class = r_class.substring(1,r_class.length());
+                        suffix = "na"+r_class;
+                        break;
+                    default:
+                        System.err.println("This isiZulu noun is not well-formed.");
+                        break;
+                }
+            }else{System.err.println("This isiZulu axiom is not well-formed.");}
+        }
+        verbalisation = convertLiteralToString(leftInstance) + " " + suffix;
+        return verbalisation;
+    }
+    
+    public String verbaliseTaxonomicExist(){
+        return null;
     }
     
     /**
@@ -114,10 +178,13 @@ public class ZuluVerbOnt {
         switch(type.toLowerCase()){ // assumes standard type given
             case "subclassof":
                 axiom = df.getOWLSubClassOfAxiom(leftClass, rightClass);
+                axType = "subclassof";
                 break;
             case "union":
+                axType = "union";
                 break;
-            case "existential union":
+            case "conjunction":
+                axType = "conjunction";
                 break;
             default:
                 System.err.println("Unknown axiom type: "+type);
@@ -188,15 +255,20 @@ public class ZuluVerbOnt {
     }
     
     /**
-     * Retrieve the string representation of the owl entity
-     * @param entity owl entity
-     * @return the representation of entity
+     * Retrieve the string representation of the owl class
+     * @param inClass the owl class
+     * @return the representation of the class
      */
     public String converClassToSring(OWLClass inClass){
         return inClass.toString().substring(inClass.toString().lastIndexOf("#")+1, inClass.toString().lastIndexOf(">"));
     }
     
-    public String converLiteralToString(OWLLiteral literal){
+    /**
+     * Retrieve the string representation of the owl literal
+     * @param literal the owl literal
+     * @return the representation of the literal
+     */
+    public String convertLiteralToString(OWLLiteral literal){
         return literal.getLiteral();
     }
     

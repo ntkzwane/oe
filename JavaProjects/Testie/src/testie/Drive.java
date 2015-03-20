@@ -12,7 +12,7 @@ package testie;
 public class Drive {
     public static void main(String[] args){
         ZuluVerbOnt driver = new ZuluVerbOnt();
-        driver.setUpverbalizer("SubClassOf","Class1.umfana","Class1.umuntu");
-        System.out.println(driver.verbaliseTaxonomicSubs());
+        driver.setUpverbalizer("Conjunction","Class1.inja","Class1.intaba");
+        System.out.println(driver.verbalise());
     }
 }

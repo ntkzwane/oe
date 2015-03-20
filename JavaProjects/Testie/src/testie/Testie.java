@@ -83,12 +83,14 @@ public class Testie{
         PrefixManager pm = new DefaultPrefixManager(null,null,iri.getNamespace());
         OWLClass class1 = df.getOWLClass("#Class1",pm);
         for(OWLAxiom axiom : ont.getAxioms()){
-            System.out.println("AxType      :" + axiom.getAxiomType());
-            System.out.println("AxNNF       :" + axiom.getNNF());
-            System.out.println("AxWAnn      :" + axiom.getAnnotations());
-            System.out.println("AxWOAnn     :" + axiom.getAxiomWithoutAnnotations());
-            System.out.println("AxName      :" + axiom);
-            System.err.println("");
+            if(axiom.getAxiomType().equals(AxiomType.SUBCLASS_OF)){
+                //System.out.println("AxType      :" + axiom.getAxiomType());
+                //System.out.println("AxNNF       :" + axiom.getNNF());
+                //System.out.println("AxWAnn      :" + axiom.getAnnotations());
+                //System.out.println("AxWOAnn     :" + axiom.getAxiomWithoutAnnotations());
+                System.out.println("AxName      :" + axiom);
+                //System.err.println("");
+            }
         }
     }
     
@@ -184,9 +186,9 @@ public class Testie{
             OWLClass nc = df.getOWLClass("#NounClass",pm);
             OWLAxiom ax = df.getOWLSubClassOfAxiom(class1, nc);
             
-            //test.printAxioms(ont, docIri);
-            System.out.println(ax);
-            System.out.println(((OWLEntity)class1));
+            test.printAxioms(ont, docIri);
+            //System.out.println(ax);
+            //System.out.println(((OWLEntity)class1));
             /////OWLSubClassOfAxiom subcl = df.getowlsubcla
             /*String base = "http://www.meteck.org/files/ontologies/ncs";
             PrefixManager pm = new DefaultPrefixManager(null,null,base);
