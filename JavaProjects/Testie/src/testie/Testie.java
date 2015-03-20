@@ -34,9 +34,8 @@ import org.semanticweb.owlapi.util.OWLOntologyWalkerVisitor;
 import uk.ac.manchester.cs.owl.owlapi.OWLDataFactoryImpl;
 import uk.ac.manchester.cs.owl.owlapi.OWLOntologyImpl;
 import uk.ac.manchester.cs.owl.owlapi.OWLOntologyManagerImpl;
-import org.coode.owlapi.manchesterowlsyntax.ManchesterOWLSyntaxEditorParser;
-import org.semanticweb.owlapi.expression.ParserException;
 import org.semanticweb.owlapi.model.AxiomType;
+import org.semanticweb.owlapi.model.OWLObjectProperty;
 
 public class Testie{
     public static final String owlfile = "ncs.owl";
@@ -68,8 +67,9 @@ public class Testie{
             
     }
     
-    public void printClasses(OWLOntologyImpl ont, IRI iri) throws URISyntaxException{
+    public void printClasses(OWLOntology ont, IRI iri) throws URISyntaxException{
         for(OWLEntity cls : ont.getClassesInSignature()){
+            System.out.println(cls.toStringID());
             System.out.println("SubClass        :"+cls.isTopEntity());
             System.out.println("Type            :"+cls.getEntityType());
             System.out.println("NestedClassExp  :"+cls.getNestedClassExpressions().iterator().next());
@@ -83,12 +83,14 @@ public class Testie{
         PrefixManager pm = new DefaultPrefixManager(null,null,iri.getNamespace());
         OWLClass class1 = df.getOWLClass("#Class1",pm);
         for(OWLAxiom axiom : ont.getAxioms()){
-            if(axiom.getAxiomType().equals(AxiomType.SUBCLASS_OF)){
+            if(axiom.getAxiomType().equals(AxiomType.SUBCLASS_OF) && axiom.getObjectPropertiesInSignature().size() > 0){
+                System.out.println("ObjSig  :"+axiom.getObjectPropertiesInSignature().iterator().next().getNamedProperty());
+                System.out.println("ObjProp :"+axiom.getObjectPropertiesInSignature());
                 //System.out.println("AxType      :" + axiom.getAxiomType());
                 //System.out.println("AxNNF       :" + axiom.getNNF());
                 //System.out.println("AxWAnn      :" + axiom.getAnnotations());
                 //System.out.println("AxWOAnn     :" + axiom.getAxiomWithoutAnnotations());
-                System.out.println("AxName      :" + axiom);
+                System.out.println("AxName  :" + axiom);
                 //System.err.println("");
             }
         }
@@ -185,8 +187,10 @@ public class Testie{
             OWLClass class1 = df.getOWLClass("#Class1",pm);
             OWLClass nc = df.getOWLClass("#NounClass",pm);
             OWLAxiom ax = df.getOWLSubClassOfAxiom(class1, nc);
+            OWLObjectProperty compareTo = df.getOWLObjectProperty("#hasPlural",pm);
+            System.out.println(ax);
             
-            test.printAxioms(ont, docIri);
+            //test.printAxioms(ont, docIri);
             //System.out.println(ax);
             //System.out.println(((OWLEntity)class1));
             /////OWLSubClassOfAxiom subcl = df.getowlsubcla
@@ -213,7 +217,7 @@ public class Testie{
             //test.printAxioms(ont, docIri);
             //test.mytestie(ont);
             //test.printAnnotations(ont,docIri);
-            //test.printClasses(docIri);
+            //test.printClasses(ont, docIri);
             System.out.println();
             // walk the classes
             //test.walkOnt(ont);

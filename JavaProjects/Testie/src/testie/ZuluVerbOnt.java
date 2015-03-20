@@ -6,11 +6,13 @@
 package testie;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLLiteral;
+import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.PrefixManager;
@@ -229,6 +231,19 @@ public class ZuluVerbOnt {
      * \TODO -- THIS WILL BE ONE OF THE LAST THINGS WE DO
      */
     public String getPluralization(OWLClass clazz, OWLClass nounClass){
+        for(OWLAxiom curAxiom : ont.getAxioms()){
+            OWLObjectProperty compareTo = df.getOWLObjectProperty("#hasPlural",pm);
+            System.out.println(compareTo);
+            // check for only axioms that are of type: SubClassOf
+            boolean ax_isSubClass = curAxiom.getAxiomType().equals(AxiomType.SUBCLASS_OF);
+            // check that those axioms have at least one object property
+            boolean ax_hasObjProp = curAxiom.getObjectPropertiesInSignature().size() > 0;
+            // check that that object property is named hasPlural
+            boolean ax_namedHasPl = curAxiom.getObjectPropertiesInSignature().iterator().next().getNamedProperty().equals(compareTo);
+            if(ax_hasObjProp && ax_isSubClass && ax_namedHasPl){
+                
+            }
+        }
         return null;
     }
     
