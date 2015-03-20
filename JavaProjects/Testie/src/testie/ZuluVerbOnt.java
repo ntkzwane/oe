@@ -6,11 +6,11 @@
 package testie;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLLiteral;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.PrefixManager;
@@ -34,31 +34,34 @@ public class ZuluVerbOnt {
     OWLAxiom axiom;
     OWLClass leftClass;
     OWLClass rightClass;
+    OWLLiteral leftInstance;
+    OWLLiteral rightInstance;
     
     /**
-     * Defualt constructor. Initializes all the values to their respective null
+     * Default constructor. Initializes all the values to their respective null
      * cases
      */
     public ZuluVerbOnt(){
         axiom = null;
-        leftClass = null;
-        rightClass = null;
+        leftInstance = null;
+        rightInstance = null;
     }
     /**
-     * Constructor for the class. Sets the quantities needed to perform the 
-     * verbalization
-     * @param type the type of axiom: SubClassOf, has existential property etc etc \TODO get format for types
-     * @param leftC the first class in the axiom
-     * @param rightC the second class in the axiom
-     * | not relation(class_1,class_2)
-     * \TODO
+     * Sets the quantities needed to perform the verbalization
+     * @param type the type of axiom: SubClassOf, has existential property etc etc \TODO agree on format for types
+     * @param leftC the first class in the axiom following the format Class#.instance
+     * @param rightC the second class in the axiom following the format Class#.instance
      */
-    public ZuluVerbOnt(String type, String leftC, String rightC){
-        setCurrentAxiom(type, leftC, rightC);
-                                                                                System.out.println(" -- Axiom: "+axiom);
+    public void setUpverbalizer(String type, String leftC, String rightC){
+        String[] class_1_parts = leftC.split("\\.");
+        String[] class_2_parts = rightC.split("\\.");
+        // create the owl literals from the input given
+        leftInstance = df.getOWLLiteral(class_1_parts[1]);
+        rightInstance = df.getOWLLiteral(class_2_parts[1]);
+        // create an owl axiom from the class types of the two literals
+        setCurrentAxiom(type, class_1_parts[0], class_2_parts[0]);              System.out.println(" -- Axiom "+axiom);
         try{
             ont = owlman.loadOntologyFromOntologyDocument(iri_relative);
-                                                                                System.out.println(" -- Ontology: "+ont.getOntologyID());
         }catch(Exception e){System.err.println("Could not load ontology file: "+iri_relative);}
     }
     
@@ -74,22 +77,20 @@ public class ZuluVerbOnt {
         if(checkNegation(axiom)){
             // \TODO do negation isht
         }else{
-            String l_class = converToSring(leftClass);
-                                                                                System.out.println(" -- lefClass: "+l_class);
+            String l_class = converLiteralToString(leftInstance);
             char augment = getFirstChar(l_class);
-                                                                                System.out.println(" -- Augment: "+augment);
             switch(Character.toLowerCase(augment)){
                 case 'i':
-                    verbalisation = converToSring(leftClass) + " y" + converToSring(rightClass);
+                    verbalisation = converLiteralToString(leftInstance) + " y" + converLiteralToString(rightInstance);
                     break;
                 case 'a':
-                    verbalisation = converToSring(leftClass) + " ng" + converToSring(rightClass);
+                    verbalisation = converLiteralToString(leftInstance) + " ng" + converLiteralToString(rightInstance);
                     break;
                 case 'o':
-                    verbalisation = converToSring(leftClass) + " ng" + converToSring(rightClass);
+                    verbalisation = converLiteralToString(leftInstance) + " ng" + converLiteralToString(rightInstance);
                     break;
                 case 'u':
-                    verbalisation = converToSring(leftClass) + " ng" + converToSring(rightClass);
+                    verbalisation = converLiteralToString(leftInstance) + " ng" + converLiteralToString(rightInstance);
                     break;
                 default:
                     System.err.print("This isiZulu nown is not well-formed.");
@@ -191,8 +192,12 @@ public class ZuluVerbOnt {
      * @param entity owl entity
      * @return the representation of entity
      */
-    public String converToSring(OWLClass inClass){
-        return inClass.toString().substring(inClass.toString().lastIndexOf("#"), inClass.toString().lastIndexOf(">"));
+    public String converClassToSring(OWLClass inClass){
+        return inClass.toString().substring(inClass.toString().lastIndexOf("#")+1, inClass.toString().lastIndexOf(">"));
+    }
+    
+    public String converLiteralToString(OWLLiteral literal){
+        return literal.getLiteral();
     }
     
     /**
