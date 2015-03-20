@@ -188,7 +188,11 @@ public class Testie{
             OWLClass nc = df.getOWLClass("#NounClass",pm);
             OWLAxiom ax = df.getOWLSubClassOfAxiom(class1, nc);
             OWLObjectProperty compareTo = df.getOWLObjectProperty("#hasPlural",pm);
-            System.out.println(ax);
+            System.out.println(nc.toString().split("#")[1]);
+            /*System.out.println(ax.getSignature().toArray()[0]);
+            System.out.println(ax.getSignature().toArray()[1]);
+            System.out.println(ax.getSignature().toArray()[2]);
+            System.out.println(ax.getSignature().toArray()[3]);*/
             
             //test.printAxioms(ont, docIri);
             //System.out.println(ax);

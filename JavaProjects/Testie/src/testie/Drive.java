@@ -12,7 +12,8 @@ package testie;
 public class Drive {
     public static void main(String[] args){
         ZuluVerbOnt driver = new ZuluVerbOnt();
-        driver.setUpverbalizer("Conjunction","Class9.inja","Class1.intaba");
+//        driver.setUpverbalizer("Conjunction","Class9.inja","Class1.intaba");
+        driver.setUpverbalizer("SubClassOf","Class9.ingulube","Class7.isilwane");
         System.out.println(driver.verbalise());
     }
 }

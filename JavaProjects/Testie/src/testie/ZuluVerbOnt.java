@@ -5,6 +5,7 @@
  */
 package testie;
 
+import java.util.Arrays;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.IRI;
@@ -62,11 +63,7 @@ public class ZuluVerbOnt {
         leftInstance = df.getOWLLiteral(class_1_parts[1]);
         rightInstance = df.getOWLLiteral(class_2_parts[1]);
         // create an owl axiom from the class types of the two literals
-        setCurrentAxiom(type, class_1_parts[0], class_2_parts[0]);              System.out.println(" -- Axiom "+axiom);
-                                                                                System.out.println(axType);
-                                                                                System.out.println(leftClass);
-                                                                                System.out.println(rightClass);
-                                                                                System.out.println("");
+        setCurrentAxiom(type, class_1_parts[0], class_2_parts[1]);
         try{
             ont = owlman.loadOntologyFromOntologyDocument(iri_relative);
         }catch(Exception e){System.err.println("Could not load ontology file: "+iri_relative);}
@@ -81,8 +78,8 @@ public class ZuluVerbOnt {
                 return verbaliseTaxonomicSubs();
             case "conjunction":
                 return verbaliseTaxonomicConj();
-            case "union":
-                return "nah";
+            case "notsubclassof":
+                return verbaliseTaxonomicSubs();
             default:
                 System.err.println("Unknown axiom type: "+axType);
                 return "nah";
@@ -98,8 +95,23 @@ public class ZuluVerbOnt {
     public String verbaliseTaxonomicSubs(){
         String verbalisation = "";
         // check if there the axiom represents a negation / disjointness
-        if(checkNegation(axiom)){
-            // \TODO do negation isht
+        if(axType.contains("not")){
+            OWLClass lefNClass = df.getOWLClass("#"+getNounClass(convertLiteralToString(leftInstance)),pm);
+            System.out.println(" -- lefC -- "+leftClass);
+            System.out.println(" -- lefNC -- "+leftClass);
+            OWLClass lefPlurNC = getPluralNC(lefNClass);
+            String pluralPre = getPluralPrefix(lefPlurNC);
+            System.out.println(pluralPre);
+            String quatConc = getQuantCord(lefPlurNC)[0];
+            System.out.println(quatConc);
+            String negSubConc = getNegSubConcord(lefPlurNC);
+            System.out.println(negSubConc);
+            String proomial = getPronomial(lefPlurNC);
+            System.out.println(proomial);
+            return quatConc+
+                   " " +pluralPre+ convertLiteralToString(leftInstance).substring(1,convertLiteralToString(leftInstance).length())+
+                   " " +negSubConc+proomial +
+                   " " +convertLiteralToString(rightInstance);
         }else{
             String l_class = convertLiteralToString(leftInstance);
             char augment = getFirstChar(l_class);
@@ -177,13 +189,13 @@ public class ZuluVerbOnt {
         leftClass = df.getOWLClass("#"+leftC,pm);
         rightClass = df.getOWLClass("#"+rightC, pm);
         
-        switch(type.toLowerCase()){ // assumes standard type given
+        switch(type.toLowerCase().replace(" ", "")){ // assumes standard type given
             case "subclassof":
                 axiom = df.getOWLSubClassOfAxiom(leftClass, rightClass);
                 axType = "subclassof";
                 break;
-            case "union":
-                axType = "union";
+            case "notsubclassof":
+                axType = "notsubclassof";
                 break;
             case "conjunction":
                 axType = "conjunction";
@@ -219,9 +231,25 @@ public class ZuluVerbOnt {
      * @return \TODO FILL THIS IN
      * \TODO -- THIS WILL BE ONE OF THE LAST THINGS WE DO
      */
-    public String getNounClass(OWLClass owlClass) {
-        String owlStringID = owlClass.toStringID();
-        return owlStringID.substring(owlStringID.indexOf ('#') + 1); 
+    public String getNounClass(String string) {
+        String augmentedPrefix = string.substring(0,4);
+        if (augmentedPrefix.contains("umu") || augmentedPrefix.contains("um")) return "Class1";
+        else if (augmentedPrefix.contains("2")) return "aba";
+        else if (augmentedPrefix.contains("u")) return "Class1a";
+        else if (augmentedPrefix.contains ("o")) return "Class2a";
+        else if (augmentedPrefix.contains("imi")) return "Class4";
+        else if (augmentedPrefix.contains("ili") || (augmentedPrefix.contains("i"))) return "Class5";
+        else if (augmentedPrefix.contains("ama")) return "Class6";
+        else if (augmentedPrefix.contains("isi")) return "Class7";
+        else if (augmentedPrefix.contains("izi")) return "Class8";
+        else if (augmentedPrefix.contains("in")) return "Class9";
+        //else if (classID.equals("i")) return "Class9a";
+        else if (augmentedPrefix.contains("izin") || (augmentedPrefix.contains("izi"))) return "Class10";
+        else if (augmentedPrefix.contains("ulu")) return "Class11";
+        else if (augmentedPrefix.contains("ubu")) return "Class14";
+        else if (augmentedPrefix.contains("uku")) return "Class15";
+        else if (augmentedPrefix.contains("ku")) return "CLass16";
+        else return "Class00";
     }
     
     /**
@@ -231,21 +259,39 @@ public class ZuluVerbOnt {
      * @param nounClass the current nounclass of the class clazz
      * \TODO -- THIS WILL BE ONE OF THE LAST THINGS WE DO
      */
-    public String getPluralization(OWLClass clazz, OWLClass nounClass){
+    public OWLClass getPluralNC(OWLClass nounClass){
+        String className = "";
+        int i = 0; // this will be used to skip the first iteration (this is the root node)
         for(OWLAxiom curAxiom : ont.getAxioms()){
             OWLObjectProperty compareTo = df.getOWLObjectProperty("#hasPlural",pm);
-            System.out.println(compareTo);
             // check for only axioms that are of type: SubClassOf
             boolean ax_isSubClass = curAxiom.getAxiomType().equals(AxiomType.SUBCLASS_OF);
             // check that those axioms have at least one object property
             boolean ax_hasObjProp = curAxiom.getObjectPropertiesInSignature().size() > 0;
-            // check that that object property is named hasPlural
-            boolean ax_namedHasPl = curAxiom.getObjectPropertiesInSignature().iterator().next().getNamedProperty().equals(compareTo);
-            if(ax_hasObjProp && ax_isSubClass && ax_namedHasPl){
-                
+            if(ax_isSubClass && ax_hasObjProp){
+                // check that that object property is named hasPlural
+                String[] origAxiom = curAxiom.getObjectPropertiesInSignature().iterator().next().toString().split("#");
+                String[] comprTo = compareTo.toString().split("#");
+                boolean ax_namedHasPl = false;
+                try{
+                    ax_namedHasPl = (origAxiom[1]).equals(comprTo[1]);
+                }catch(Exception e){}
+                if(ax_namedHasPl){
+                    // check class containment in the signature
+                    className = convertClassToString(nounClass);
+                    if(curAxiom.getSignature().toString().contains(className)){
+                        // extract the class name that pluralises the input class
+                        String objectRange = curAxiom.getSignature().toArray()[2].toString();
+                        className = objectRange.substring(
+                                objectRange.indexOf("#")+1, // start substring from the index just after the #
+                                objectRange.length()-1);      // and end at the end of the class name, before >
+                        break;
+                    }
+                }
             }
+            i++;
         }
-        return null;
+        return df.getOWLClass("#"+className,pm);
     }
     
     /**
@@ -274,7 +320,7 @@ public class ZuluVerbOnt {
      * @param inClass the owl class
      * @return the representation of the class
      */
-    public String converClassToSring(OWLClass inClass){
+    public String convertClassToString(OWLClass inClass){
         return inClass.toString().substring(inClass.toString().lastIndexOf("#")+1, inClass.toString().lastIndexOf(">"));
     }
     
@@ -309,13 +355,12 @@ public class ZuluVerbOnt {
      * @param nounClass     the noun class of the word
      * @result augmentedPrefix the concatenation of the augment and the prefix
      */
-    public String[] getAugmentedPrefix (OWLClass nounClass) {
-        String className = getNounClass (nounClass);
-        String classID = className.substring(className.indexOf ("Class") + 5);
+    public String getAugmentedPrefix (OWLClass inputClass) {
+        String classID = inputClass.toString().split("#")[1].substring(0,inputClass.toString().split("#")[1].length());
         
         // construct the augmented prefix
         if (classID.equals("1") || classID.equals("3")) return "umu";
-        else if (classID.equals("2") ) return "aba"
+        else if (classID.equals("2") ) return "aba";
         else if (classID.equals("1a") || classID.equals("3a") ) return "u";
         else if (classID.equals ("2a")) return "o";
         else if (classID.equals("4")) return "imi";
@@ -331,6 +376,156 @@ public class ZuluVerbOnt {
         else if (classID.equals("15")) return "uku";
         else if (classID.equals("17")) return "ku";
         else return "";
+    }
+    
+    /**
+     * Look up the quantitative concord parts for the given noun class
+     * @param nounClass the current noun class
+     * @return the first element is the oral+onke prefix
+     * @return the second element is the nke prefix 
+     */
+    public String[] getQuantCord(OWLClass nounClass){
+        String className = convertClassToString(nounClass);
+        System.out.println(" -- in qc -- "+nounClass);
+        switch(className){
+            case "Class1":
+                return new String[]{"wonke","wo"};
+            case "Class2":
+                return new String[]{"bonke","bo"};
+            case "Class1a":
+                return new String[]{"wonke","wo"};
+            case "Class2a":
+                return new String[]{"bonke","bo"};
+            case "Class3a":
+                return new String[]{"wonke","bqo"};
+            case "Class3":
+                return new String[]{"wonke","wo"};
+            case "Class4":
+                return new String[]{"yonke","yo"};
+            case "Class5":
+                return new String[]{"lonke","lo"};
+            case "Class6":
+                return new String[]{"onke","o"};
+            case "Class7":
+                return new String[]{"sonke","so"};
+            case "Class8":
+                return new String[]{"zonke","zo"};
+            case "Class9a":
+                return new String[]{"yonke","yo"};
+            case "Class9":
+                return new String[]{"yonke","yo"};
+            case "Class10":
+                return new String[]{"zonke","zo"};
+            case "Class11":
+                return new String[]{"lonke","lo"};
+            case "Class14":
+                return new String[]{"bonke","bo"};
+            case "Class15":
+                return new String[]{"bonke","ko"};
+            default:
+                return new String[]{"",""};
+        }
+    }
+    //\TODO COMMENT
+    public String getNegSubConcord(OWLClass nounClass){
+        String className = convertClassToString(nounClass);
+        switch(className){
+            case "Class1":
+                return "aka";
+            case "Class2":
+                return "aba";
+            case "Class1a":
+                return "aka";
+            case "Class2a":
+                return "aba";
+            case "Class3a":
+                return "aka";
+            case "Class3":
+                return "awu";
+            case "Class4":
+                return "ayi;";
+            case "Class5":
+                return "ali";
+            case "Class6":
+                return "awa";
+            case "Class7":
+                return "asi";
+            case "Class8":
+                return "azi";
+            case "Class9a":
+                return "ayi";
+            case "Class9":
+                return "ayi";
+            case "Class10":
+                return "azi";
+            case "Class11":
+                return "alu";
+            case "Class14":
+                return "abu";
+            case "Class15":
+                return "aku";
+            default:
+                return "";
+        }
+    }
+    //\TODO COMMENT
+    public String getPronomial(OWLClass nounClass){
+        String className = convertClassToString(nounClass);
+        switch(className){
+            case "Class1":
+                return "yena";
+            case "Class2":
+                return "bona";
+            case "Class1a":
+                return "yena";
+            case "Class2a":
+                return "bona";
+            case "Class3a":
+                return "wona";
+            case "Class3":
+                return "wona";
+            case "Class4":
+                return "yona;";
+            case "Class5":
+                return "lona";
+            case "Class6":
+                return "wona";
+            case "Class7":
+                return "sona";
+            case "Class8":
+                return "zona";
+            case "Class9a":
+                return "yona";
+            case "Class9":
+                return "yona";
+            case "Class10":
+                return "zona";
+            case "Class11":
+                return "lona";
+            case "Class14":
+                return "bona";
+            case "Class15":
+                return "khona";
+            default:
+                return "";
+        }
+    }
+    
+    //\TODO -- this is a helper method for above method
+    public String getPluralPrefix(OWLClass nounClass){
+        String className = convertClassToString(nounClass);
+        switch(className){
+            case "Class2":
+                return "aba";
+            case "Class4":
+                return "imi;";
+            case "Class6":
+                return "ama";
+            case "Class8":
+                return "ziz";
+            default:
+                return "";
+        }
     }
 }
 
